@@ -4,10 +4,45 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+class Toggle extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {isToggleOn: true};
+
+    this.handleClick = this.handleClick.bind(this);
+    console.log(this);
+    console.log(this.handleClick);
+  }
+
+  handleClick(){
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    })
+    );
+  }
+
+  render(){
+    return(
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    )
+  }
+}
+
+/*function ActionLink(){
+  function handleClick(e){
+    e.preventDefault();
+    console.log('Le lien à été cliqué.');
+  }
+
+  return(
+    <a href="#" onClick={handleClick}>Cliquez ICI</a>
+  );
+}*/
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Toggle />,
   document.getElementById('root')
 );
 
