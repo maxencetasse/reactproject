@@ -10,6 +10,22 @@ class TimeClock extends React.Component {
     this.state = {date: new Date()};
   }
 
+  componentDidMount(){
+    this.timerID = setInterval(
+      () => this.tick(), 1000
+    );
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
   render() {
     return(
       <div>
@@ -20,6 +36,16 @@ class TimeClock extends React.Component {
   }
 }
 
+function Application(){
+  return(
+    <div>
+      <TimeClock></TimeClock>
+      <TimeClock></TimeClock>
+      <TimeClock></TimeClock>
+    </div>
+  )
+}
+
 function clock(){
   ReactDOM.render(
     <TimeClock />,
@@ -27,7 +53,12 @@ function clock(){
   );
 }
 
-setInterval(clock, 1000);
+ReactDOM.render(
+  <Application></Application>,
+  document.getElementById('root')
+)
+
+//setInterval(clock, 1000);
 
 
 // If you want to start measuring performance in your app, pass a function
