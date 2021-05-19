@@ -23,6 +23,8 @@ class Toggle extends React.Component{
 
   render(){
     return(
+      //Possibilité de mettre des paramètres
+      //<button onClick={(e) => this.deleteRow(id, e)}>Supprimer la ligne</button>
       <button onClick={this.handleClick}>
         {this.state.isToggleOn ? 'ON' : 'OFF'}
       </button>
