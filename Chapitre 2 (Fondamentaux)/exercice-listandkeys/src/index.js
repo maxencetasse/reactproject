@@ -4,10 +4,44 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+function ListItem(props){
+  const nombre = props.value;
+  /*Mettre en tant que clé l'index est une bonne pratique. 
+  Cependant l'index peut causer des problèmes de performance en cas de changment d'ordre des composants.*/
+  return (
+    <li>
+      {nombre}
+    </li>
+  );
+}
+
+function NumberList(props){
+  const nombres = props.nombres;
+  console.log(nombres);
+  const fruits = props.fruits;
+
+  const listItems = nombres.map((nombre, index) =>
+    <ListItem value={nombre} key={index}></ListItem>
+  );
+
+  const listItemsFruits = fruits.map((fruit, index) =>
+    <ListItem value={fruit} key={index}></ListItem>
+  );
+
+  return (<div>
+    <ul>
+      {listItems}
+    </ul>
+    <ul>
+      {listItemsFruits}
+    </ul>
+  </div>);
+}
+
+const numbers = [1, 2, 3, 4, 5];
+const fruits = ["Banana", "Apple", "Orange"];
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <NumberList nombres={numbers} fruits={fruits}></NumberList>,
   document.getElementById('root')
 );
 
