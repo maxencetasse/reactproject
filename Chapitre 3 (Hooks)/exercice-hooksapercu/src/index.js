@@ -23,6 +23,16 @@ function Example(props) {
   );
 }
 
+class ChatAPI{
+  constructor(){
+
+  }
+
+  subscribeToFriendStatus(){
+    return this;
+  }
+}
+
 function FriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
 
@@ -31,9 +41,9 @@ function FriendStatus(props) {
   }
 
   useEffect(() => {
-    //ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
-      //ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
   });
 
@@ -57,8 +67,11 @@ ReactDOM.render(
   document.getElementById('exemplefruit')
 );*/
 
+const friends = { id:1,
+                  name: "Maxence" };
+
 ReactDOM.render(
-  <FriendStatus></FriendStatus>,
+  <FriendStatus friend={friends}></FriendStatus>,
   document.getElementById('friendstatus')
 );
 
