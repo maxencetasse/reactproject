@@ -55,15 +55,15 @@ function createUser(){
 
   let request = new XMLHttpRequest();
   
-  request.open('POST', 'https://petstore.swagger.io/v2/user/createUser', true);
+  request.open('POST', 'https://petstore.swagger.io/v2/user/', true);
   request.setRequestHeader("Content-Type", "application/json"); 
-  /*request.onreadystatechange = () => {
+  request.onreadystatechange = function () {
     if(this.readyState === XMLHttpRequest.DONE && this.status === 200){
-      alert("It's Okay !!!");
-    }else{
-      alert('Request not send !');
+      console.log("It's Okay !!!");
+      let response = request.responseText;
+      console.log(response);
     }
-  }*/
+  };
 
   request.send(JSON.stringify(myUser));
 
@@ -91,7 +91,7 @@ function addPet(){
   
   request.open('POST', 'https://petstore.swagger.io/v2/pet/', true);
   request.setRequestHeader("Content-Type", "application/json"); 
-  console.log(JSON.stringify(myPet));
+  //console.log(JSON.stringify(myPet));
   request.onreadystatechange = function () {
     if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
       // Print received data from server
@@ -103,8 +103,6 @@ function addPet(){
   };
   let data = JSON.stringify(myPet);
   request.send(data);
-  
-  
 }
 
 function ButtonTestAPI(props){
