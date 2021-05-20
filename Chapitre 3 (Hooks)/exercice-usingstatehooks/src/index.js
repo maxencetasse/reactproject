@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+function Example() {
+  const [count, setCount] = useState(0);
+
+  return (<div>
+      <p>Bouton cliqué {count} fois.</p>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+  </div>)
+  ;
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Example></Example>,
   document.getElementById('root')
 );
 
