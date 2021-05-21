@@ -43,17 +43,7 @@ class Pet{
   }
 }
 
-async function createUser(){
-  let myUser = new User();
-  myUser.id = 0;
-  myUser.username = "Logulasse";
-  myUser.firstname = "Max";
-  myUser.lastname = "Tas";
-  myUser.email = "maxtas@gmail.fr";
-  myUser.password = "aaabbbccc123456";
-  myUser.phone = "0202020202";
-  myUser.userStatus = 0;
-
+function createUserRequest(myUser){
   let request = new XMLHttpRequest();
   
   request.open('POST', 'https://petstore.swagger.io/v2/user/', true);
@@ -69,6 +59,39 @@ async function createUser(){
   request.send(JSON.stringify(myUser));
 
   let response = request.response;
+}
+
+async function createUser(){
+  let myUser = new User();
+  myUser.id = 0;
+  myUser.username = "Logulasse";
+  myUser.firstname = "Max";
+  myUser.lastname = "Tas";
+  myUser.email = "maxtas@gmail.fr";
+  myUser.password = "aaabbbccc123456";
+  myUser.phone = "0202020202";
+  myUser.userStatus = 0;
+
+  await createUserRequest(myUser);
+}
+
+function addPetRequest(myPet){
+  let request = new XMLHttpRequest();
+  
+  request.open('POST', 'https://petstore.swagger.io/v2/pet/', true);
+  request.setRequestHeader("Content-Type", "application/json"); 
+  //console.log(JSON.stringify(myPet));
+  request.onreadystatechange = function () {
+    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+      // Print received data from server
+      console.log("That's OK ! Continue ! ");
+
+      let response = request.responseText;
+      console.log(response);
+    }
+  };
+  let data = JSON.stringify(myPet);
+  request.send(data);
 }
 
 async function addPet(){
@@ -88,22 +111,7 @@ async function addPet(){
   myPet.tags = [myTag];
   myPet.status = "available";
 
-  let request = new XMLHttpRequest();
-  
-  request.open('POST', 'https://petstore.swagger.io/v2/pet/', true);
-  request.setRequestHeader("Content-Type", "application/json"); 
-  //console.log(JSON.stringify(myPet));
-  request.onreadystatechange = function () {
-    if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-      // Print received data from server
-      console.log("That's OK ! Continue ! ");
-
-      let response = request.responseText;
-      console.log(response);
-    }
-  };
-  let data = JSON.stringify(myPet);
-  request.send(data);
+  await setTimeout(addPetRequest(myPet), 10000);
 }
 
 function ButtonTestAPI(props){
