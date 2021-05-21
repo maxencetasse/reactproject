@@ -43,7 +43,7 @@ class Pet{
   }
 }
 
-function createUser(){
+async function createUser(){
   let myUser = new User();
   myUser.id = 0;
   myUser.username = "Logulasse";
@@ -71,7 +71,7 @@ function createUser(){
   let response = request.response;
 }
 
-function addPet(){
+async function addPet(){
   let myCategory = new Category();
   myCategory.id = 0;
   myCategory.name = "Dog";
