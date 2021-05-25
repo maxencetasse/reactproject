@@ -94,6 +94,32 @@ function addPetRequest(myPet){
   request.send(data);
 }
 
+function addPetPromise(myPet){
+  return new Promise(function(resolve, reject){
+    let request = new XMLHttpRequest();
+  
+    request.open('POST', 'https://petstore.swagger.io/v2/pet/', true);
+    request.setRequestHeader("Content-Type", "application/json"); 
+    //console.log(JSON.stringify(myPet));
+    
+    let data = JSON.stringify(myPet);
+    request.send(data);
+
+    request.onreadystatechange = function () {
+      if(request.status === 200 && request.responseText !== ""){
+        try{
+          console.log(request.responseText, "test");
+          const myJSONResponse = JSON.parse(request.responseText);
+          resolve(myJSONResponse);
+        }catch(error){
+          console.log(error);
+          reject(error);
+        }
+      }
+    };
+  })
+}
+
 async function addPet(){
   let myCategory = new Category();
   myCategory.id = 0;
@@ -111,7 +137,11 @@ async function addPet(){
   myPet.tags = [myTag];
   myPet.status = "available";
 
-  await setTimeout(addPetRequest(myPet), 10000);
+  addPetPromise(myPet)
+    .then(myNewPet => myPet.id =  myNewPet.id)
+    .catch(error => console.log(error));
+
+  console.log(`Mon animal est ${myPet.id}`)
 }
 
 function ButtonTestAPI(props){
