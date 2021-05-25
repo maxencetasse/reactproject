@@ -4,44 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
-
-class User{
-  constructor(id, username, firstname, lastname, email, password, phone, userStatus){
-    this.id = id;
-    this.username = username;
-    this.firstname = firstname;
-    this.lastname = lastname;
-    this.email = email;
-    this.password = password;
-    this.phone = phone;
-    this.userStatus = userStatus;
-  }
-}
-
-class Category{
-  constructor(id, name){
-    this.id = id;
-    this.name = name;
-  }
-}
-
-class Tag{
-  constructor(id, name){
-    this.id = id;
-    this.name = name;
-  }
-}
-
-class Pet{
-  constructor(id, category, name, photoUrls, tags, status){
-    this.id = id;
-    this.category = category;
-    this.name = name;
-    this.photoUrls = photoUrls;
-    this.tags = tags;
-    this.status = status;
-  }
-}
+import Pet from './class/pet.js';
+import Category from './class/category.js';
+import Tag from './class/tag.js';
+import User from './class/user.js';
 
 function createUserRequest(myUser){
   let request = new XMLHttpRequest();
@@ -61,7 +27,7 @@ function createUserRequest(myUser){
   let response = request.response;
 }
 
-async function createUser(){
+function createUser(){
   let myUser = new User();
   myUser.id = 0;
   myUser.username = "Logulasse";
@@ -72,7 +38,7 @@ async function createUser(){
   myUser.phone = "0202020202";
   myUser.userStatus = 0;
 
-  await createUserRequest(myUser);
+  createUserRequest(myUser);
 }
 
 function addPetRequest(myPet){
@@ -120,7 +86,7 @@ function addPetPromise(myPet){
   })
 }
 
-async function addPet(){
+function addPet(){
   let myCategory = new Category();
   myCategory.id = 0;
   myCategory.name = "Dog";
