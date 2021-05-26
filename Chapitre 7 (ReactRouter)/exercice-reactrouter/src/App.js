@@ -24,6 +24,9 @@ function App() {
           <li>
             <Link to="/topics">Topics</Link>
           </li>
+          <li>
+            <Link to="/test">Tests</Link>
+          </li>
         </ul>
 
         <Switch>
@@ -35,6 +38,9 @@ function App() {
           </Route>
           <Route path="/">
             <Home />
+          </Route>
+          <Route path="/test">
+            <Test />
           </Route>
         </Switch>
       </div>
@@ -48,6 +54,10 @@ function Home() {
 
 function About() {
   return <h2>About</h2>;
+}
+
+function Test(){
+  return <h2>Test</h2>;
 }
 
 function Topics() {
