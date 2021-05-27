@@ -1,18 +1,22 @@
 import MenuItem from './MenuItem.js';
 
-let listeSousMenu = ["Accueil", "Sein", "Colon", "Utérus"];
+let listeSousMenu = ["Accueil", "Sein", "Colon", "Uterus"];
 
-listeSousMenu = listeSousMenu.map((sousMenu) =>
-  <ul>
-    <MenuItem key={sousMenu.toString()} label={sousMenu}>
+listeSousMenu = listeSousMenu.map((sousMenu, index) =>
+  <li key={index}>
+    <MenuItem index={index} label={sousMenu}>
     </MenuItem>
-  </ul>
+  </li>
 );
 
 function MenuList(props){
   return (
     <div>
-      {listeSousMenu}
+      <nav>
+        <ul>
+          {listeSousMenu}
+        </ul>
+      </nav>
     </div>
   );
 }

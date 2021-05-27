@@ -1,6 +1,10 @@
 function Sein(){
     return(
-        <div>Bonjour</div>
+        <div>
+            <h2>
+                Bienvenue sur le dépistage du Sein
+            </h2>
+        </div>
     );
 }
 
