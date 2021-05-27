@@ -1,23 +1,28 @@
-import MenuItem from './MenuItem.js';
+//Importation des modules
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import { Link } from "react-router-dom";
 
-let listeSousMenu = ["Accueil", "Sein", "Colon", "Uterus"];
+let listMenu = ["Accueil", "Sein", "Colon", "Uterus"];
 
-listeSousMenu = listeSousMenu.map((sousMenu, index) =>
-  <li key={index}>
-    <MenuItem index={index} label={sousMenu}>
-    </MenuItem>
-  </li>
+listMenu = listMenu.map((elementMenu, index) =>
+  <Link key={index} to={"/" + elementMenu}>
+    <ListItem button >
+      <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+      <ListItemText primary={elementMenu}/>
+    </ListItem>
+  </Link>
 );
 
 function MenuList(props){
   return (
-    <div>
-      <nav>
-        <ul>
-          {listeSousMenu}
-        </ul>
-      </nav>
-    </div>
+    <List>
+      {listMenu}
+    </List>
   );
 }
 
