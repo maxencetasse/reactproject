@@ -5,6 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
 import { Link } from "react-router-dom";
 
 let listMenu = ["Accueil", "Sein", "Colon", "Uterus"];
@@ -12,7 +13,7 @@ let listMenu = ["Accueil", "Sein", "Colon", "Uterus"];
 listMenu = listMenu.map((elementMenu, index) =>
   <Link key={index} to={"/" + elementMenu}>
     <ListItem button >
-      <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+      <ListItemIcon>{index % 2 === 0 ? <HomeIcon /> : <MailIcon />}</ListItemIcon>
       <ListItemText primary={elementMenu}/>
     </ListItem>
   </Link>

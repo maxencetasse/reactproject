@@ -146,21 +146,21 @@ function DrawerLeft() {
             <MenuList></MenuList>
         </Drawer>
         <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Switch>
-          <Route path="/Sein">
-            <Sein />
-          </Route>
-          <Route path="/Colon">
-            <Colon />
-          </Route>
-          <Route path="/Uterus">
-            <Uterus />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+            <div className={classes.toolbar} />
+            <Switch>
+            <Route path="/Sein">
+                <Sein />
+            </Route>
+            <Route path="/Colon">
+                <Colon />
+            </Route>
+            <Route path="/Uterus">
+                <Uterus />
+            </Route>
+            <Route path="/">
+                <Home />
+            </Route>
+            </Switch>
         </main>
       </div>
     );
